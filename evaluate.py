@@ -31,23 +31,23 @@ import time
 import numpy as np
 import tensorflow as tf
 
-from im2txt import configuration
-from im2txt import show_and_tell_model
+import configuration
+import show_and_tell_model
 
 FLAGS = tf.flags.FLAGS
 
-tf.flags.DEFINE_string("input_file_pattern", "",
+tf.flags.DEFINE_string("input_file_pattern", "/data/weixin-42421001/flickr8k/val-00000-of-00001",
                        "File pattern of sharded TFRecord input files.")
-tf.flags.DEFINE_string("checkpoint_dir", "",
+tf.flags.DEFINE_string("checkpoint_dir", "/output/train",
                        "Directory containing model checkpoints.")
-tf.flags.DEFINE_string("eval_dir", "", "Directory to write event logs.")
+tf.flags.DEFINE_string("eval_dir", "/output/eval", "Directory to write event logs.")
 
-tf.flags.DEFINE_integer("eval_interval_secs", 600,
+tf.flags.DEFINE_integer("eval_interval_secs", 50,
                         "Interval between evaluation runs.")
-tf.flags.DEFINE_integer("num_eval_examples", 10132,
+tf.flags.DEFINE_integer("num_eval_examples", 1000,
                         "Number of examples for evaluation.")
 
-tf.flags.DEFINE_integer("min_global_step", 5000,
+tf.flags.DEFINE_integer("min_global_step", 1000,
                         "Minimum global step to run evaluation.")
 
 tf.logging.set_verbosity(tf.logging.INFO)

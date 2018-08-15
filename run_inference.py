@@ -24,18 +24,18 @@ import os
 
 import tensorflow as tf
 
-from im2txt import configuration
-from im2txt import inference_wrapper
-from im2txt.inference_utils import caption_generator
-from im2txt.inference_utils import vocabulary
+import configuration
+import inference_wrapper
+from inference_utils import caption_generator
+from inference_utils import vocabulary
 
 FLAGS = tf.flags.FLAGS
 
-tf.flags.DEFINE_string("checkpoint_path", "",
+tf.flags.DEFINE_string("checkpoint_path", "/output/train",
                        "Model checkpoint file or directory containing a "
                        "model checkpoint file.")
-tf.flags.DEFINE_string("vocab_file", "", "Text file containing the vocabulary.")
-tf.flags.DEFINE_string("input_files", "",
+tf.flags.DEFINE_string("vocab_file", "/data/weixin-42421001/flickr8k/word_counts.txt", "Text file containing the vocabulary.")
+tf.flags.DEFINE_string("input_files", "/data/weixin-42421001/flickr8k/test.jpg",
                        "File pattern or comma-separated list of file patterns "
                        "of image files.")
 

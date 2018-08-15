@@ -193,7 +193,7 @@ def _int64_feature(value):
 
 def _bytes_feature(value):
   """Wrapper for inserting a bytes Feature into a SequenceExample proto."""
-  return tf.train.Feature(bytes_list=tf.train.BytesList(value=[str(value).encode()]))
+  return tf.train.Feature(bytes_list=tf.train.BytesList(value=[value.encode() if type(value)==str else value]))
 
 
 def _int64_feature_list(values):
