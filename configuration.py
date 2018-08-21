@@ -19,40 +19,16 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-#add to user-defined parameters
-import argparse
-
-def parse_args(check=True):
-  parser = argparse.ArgumentParser()
-  parser.add_argument('--output_dir', type=str, default='./output1',
-					  help='path to save log and checkpoint.')
-
-  parser.add_argument('--num_steps', type=int, default=32,
-					  help='number of time steps of one sample.')
-
-  parser.add_argument('--batch_size', type=int, default=3,
-					  help='batch size to use.')
-
-  parser.add_argument('--learning_rate', type=float, default=0.001,
-					  help='learning rate')
-
-  parser.add_argument('--embedding', type=str, default='embedding.npy',
-					  help='path to embedding.npy.')
-
-  FLAGS, unparsed = parser.parse_known_args()
-
-  return FLAGS, unparsed
+from flags import parse_args
 
 class ModelConfig(object):
   """Wrapper class for model hyperparameters."""
 
   def __init__(self):
     """Sets the default model hyperparameters."""
-	#user-defined parameters
-	FLAGS, unparsed = parse_args()
-	tf.logging.info("test : %s", FLAGS.output_dir)
-	#
-	
+    #user-defined parameters
+    FLAGS, unparsed = parse_args()
+    #
     # File pattern of sharded TFRecord file containing SequenceExample protos.
     # Must be provided in training and evaluation modes.
     self.input_file_pattern = None
@@ -84,7 +60,7 @@ class ModelConfig(object):
     self.num_preprocess_threads = 4
 
     # Batch size.
-    self.batch_size = 10
+    self.batch_size = FLAGS.batch_size#10
 
     # File containing an Inception v3 checkpoint to initialize the variables
     # of the Inception model. Must be provided when starting training for the
@@ -99,11 +75,11 @@ class ModelConfig(object):
     self.initializer_scale = 0.08
 
     # LSTM input and output dimensionality, respectively.
-    self.embedding_size = 512
-    self.num_lstm_units = 512
+    self.embedding_size = FLAGS.embedding_size#512
+    self.num_lstm_units = FLAGS.num_lstm_units#512
 
     # If < 1.0, the dropout keep probability applied to LSTM variables.
-    self.lstm_dropout_keep_prob = 0.7
+    self.lstm_dropout_keep_prob = FLAGS.lstm_dropout_keep_prob#0.7
 
 
 class TrainingConfig(object):
@@ -111,23 +87,26 @@ class TrainingConfig(object):
 
   def __init__(self):
     """Sets the default training hyperparameters."""
+    #user-defined parameters
+    FLAGS, unparsed = parse_args()
+
     # Number of examples per epoch of training data.
-    self.num_examples_per_epoch = 6000
+    self.num_examples_per_epoch = FLAGS.num_examples_per_epoch#6000
 
     # Optimizer for training the model.
     self.optimizer = "SGD"
 
     # Learning rate for the initial phase of training.
-    self.initial_learning_rate = 2.0
-    self.learning_rate_decay_factor = 0.5
-    self.num_epochs_per_decay = 8.0
+    self.initial_learning_rate = FLAGS.initial_learning_rate#2.0
+    self.learning_rate_decay_factor = FLAGS.learning_rate_decay_factor#0.5
+    self.num_epochs_per_decay = FLAGS.num_epochs_per_decay#8.0
 
     # Learning rate when fine tuning the Inception v3 parameters.
-    self.train_inception_learning_rate = 0.0005
+    self.train_inception_learning_rate = FLAGS.train_inception_learning_rate#0.0005
 
     # If not None, clip gradients to this value.
-    self.clip_gradients = 5.0
+    self.clip_gradients = FLAGS.clip_gradients#5.0
 
     # How many model checkpoints to keep.
-    self.max_checkpoints_to_keep = 10
+    self.max_checkpoints_to_keep = FLAGS.max_checkpoints_to_keep#10
     #self.keep_checkpoint_every_n_hours = 0.05

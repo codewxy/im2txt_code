@@ -24,19 +24,23 @@ import tensorflow as tf
 import configuration
 import show_and_tell_model
 
-FLAGS = tf.app.flags.FLAGS
+# FLAGS = tf.app.flags.FLAGS
 
-tf.flags.DEFINE_string("input_file_pattern", "/data/weixin-42421001/flickr8k/train-?????-of-00004",
-                       "File pattern of sharded TFRecord input files.")
-tf.flags.DEFINE_string("inception_checkpoint_file", "/data/weixin-42421001/flickr8k/inception_v3.ckpt",
-                       "Path to a pretrained inception_v3 model.")
-tf.flags.DEFINE_string("train_dir", "/output/train",
-                       "Directory for saving and loading model checkpoints.")
-tf.flags.DEFINE_boolean("train_inception", False,
-                        "Whether to train inception submodel variables.")
-tf.flags.DEFINE_integer("number_of_steps", 100000, "Number of training steps.")
-tf.flags.DEFINE_integer("log_every_n_steps", 50,
-                        "Frequency at which loss and global step are logged.")
+# tf.flags.DEFINE_string("input_file_pattern", "/data/weixin-42421001/flickr8k/train-?????-of-00004",
+                       # "File pattern of sharded TFRecord input files.")
+# tf.flags.DEFINE_string("inception_checkpoint_file", "/data/weixin-42421001/flickr8k/inception_v3.ckpt",
+                       # "Path to a pretrained inception_v3 model.")
+# tf.flags.DEFINE_string("train_dir", "/output/train",
+                       # "Directory for saving and loading model checkpoints.")
+# tf.flags.DEFINE_boolean("train_inception", False,
+                        # "Whether to train inception submodel variables.")
+# tf.flags.DEFINE_integer("number_of_steps", 100000, "Number of training steps.")
+# tf.flags.DEFINE_integer("log_every_n_steps", 50,
+                        # "Frequency at which loss and global step are logged.")
+
+from flags import parse_args
+FLAGS, unparsed = parse_args()
+
 
 tf.logging.set_verbosity(tf.logging.INFO)
 
@@ -46,8 +50,8 @@ def main(unused_argv):
   assert FLAGS.train_dir, "--train_dir is required"
 
   model_config = configuration.ModelConfig()
-  model_config.input_file_pattern = FLAGS.input_file_pattern
-  model_config.inception_checkpoint_file = FLAGS.inception_checkpoint_file
+#  model_config.input_file_pattern = FLAGS.input_file_pattern
+#  model_config.inception_checkpoint_file = FLAGS.inception_checkpoint_file
   training_config = configuration.TrainingConfig()
 
   # Create training directory.
