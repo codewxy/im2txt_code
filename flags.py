@@ -6,7 +6,7 @@ def parse_args(check=True):
     parser.add_argument('--output_dir', type=str, default='./output',
                         help='path to save log and checkpoint.')
 
-    parser.add_argument('--batch_size', type=int, default=10,
+    parser.add_argument('--batch_size', type=int, default=32,
                         help='batch size to use.')
 
     parser.add_argument('--input_file_pattern', type=str, default='/data/weixin-42421001/flickr8k/train-?????-of-00004',
@@ -25,7 +25,7 @@ def parse_args(check=True):
                         help='If < 1.0, the dropout keep probability applied to LSTM variables.')
 
     #
-    parser.add_argument('--num_examples_per_epoch', type=int, default=6000,
+    parser.add_argument('--num_examples_per_epoch', type=int, default=586363,
                         help='Number of examples per epoch of training data.')
 
     parser.add_argument('--initial_learning_rate', type=float, default=2.0,
