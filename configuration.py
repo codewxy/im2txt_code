@@ -19,12 +19,40 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+#add to user-defined parameters
+import argparse
+
+def parse_args(check=True):
+	parser = argparse.ArgumentParser()
+	parser.add_argument('--output_dir', type=str, default='./output',
+						help='path to save log and checkpoint.')
+
+	parser.add_argument('--num_steps', type=int, default=32,
+						help='number of time steps of one sample.')
+
+	parser.add_argument('--batch_size', type=int, default=3,
+						help='batch size to use.')
+
+	parser.add_argument('--learning_rate', type=float, default=0.001,
+						help='learning rate')
+
+	parser.add_argument('--embedding', type=str, default='embedding.npy',
+						help='path to embedding.npy.')
+
+	FLAGS, unparsed = parser.parse_known_args()
+
+	return FLAGS, unparsed
 
 class ModelConfig(object):
   """Wrapper class for model hyperparameters."""
 
   def __init__(self):
     """Sets the default model hyperparameters."""
+	#user-defined parameters
+	FLAGS, unparsed = parse_args()
+	print("test is :",FLAGS.output_dir)
+	#
+	
     # File pattern of sharded TFRecord file containing SequenceExample protos.
     # Must be provided in training and evaluation modes.
     self.input_file_pattern = None
