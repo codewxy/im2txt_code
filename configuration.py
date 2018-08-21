@@ -31,7 +31,7 @@ class ModelConfig(object):
     #
     # File pattern of sharded TFRecord file containing SequenceExample protos.
     # Must be provided in training and evaluation modes.
-    self.input_file_pattern = None
+    self.input_file_pattern = FLAGS.input_file_pattern#None
 
     # Image format ("jpeg" or "png").
     self.image_format = "jpeg"
@@ -65,7 +65,7 @@ class ModelConfig(object):
     # File containing an Inception v3 checkpoint to initialize the variables
     # of the Inception model. Must be provided when starting training for the
     # first time.
-    self.inception_checkpoint_file = None
+    self.inception_checkpoint_file = FLAGS.inception_checkpoint_file#None
 
     # Dimensions of Inception v3 input images.
     self.image_height = 299
