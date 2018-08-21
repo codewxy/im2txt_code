@@ -24,7 +24,7 @@ import argparse
 
 def parse_args(check=True):
 	parser = argparse.ArgumentParser()
-	parser.add_argument('--output_dir', type=str, default='./output',
+	parser.add_argument('--output_dir', type=str, default='./output1',
 						help='path to save log and checkpoint.')
 
 	parser.add_argument('--num_steps', type=int, default=32,
@@ -50,7 +50,7 @@ class ModelConfig(object):
     """Sets the default model hyperparameters."""
 	#user-defined parameters
 	FLAGS, unparsed = parse_args()
-	print("test is :",FLAGS.output_dir)
+	tf.logging.info("test : %s", FLAGS.output_dir)
 	#
 	
     # File pattern of sharded TFRecord file containing SequenceExample protos.
