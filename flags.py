@@ -38,7 +38,7 @@ def parse_args(check=True):
     parser.add_argument('--train_inception_learning_rate', type=float, default=0.0005,
                         help='Learning rate when fine tuning the Inception v3 parameters.')
 
-    parser.add_argument('--clip_gradients', type=int, default=5,
+    parser.add_argument('--clip_gradients', type=float, default=5.0,
                         help='If not None, clip gradients to this value.')
 
     parser.add_argument('--max_checkpoints_to_keep', type=int, default=10,
