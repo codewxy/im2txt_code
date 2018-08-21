@@ -23,25 +23,25 @@ from __future__ import print_function
 import argparse
 
 def parse_args(check=True):
-	parser = argparse.ArgumentParser()
-	parser.add_argument('--output_dir', type=str, default='./output1',
-						help='path to save log and checkpoint.')
+  parser = argparse.ArgumentParser()
+  parser.add_argument('--output_dir', type=str, default='./output1',
+					  help='path to save log and checkpoint.')
 
-	parser.add_argument('--num_steps', type=int, default=32,
-						help='number of time steps of one sample.')
+  parser.add_argument('--num_steps', type=int, default=32,
+					  help='number of time steps of one sample.')
 
-	parser.add_argument('--batch_size', type=int, default=3,
-						help='batch size to use.')
+  parser.add_argument('--batch_size', type=int, default=3,
+					  help='batch size to use.')
 
-	parser.add_argument('--learning_rate', type=float, default=0.001,
-						help='learning rate')
+  parser.add_argument('--learning_rate', type=float, default=0.001,
+					  help='learning rate')
 
-	parser.add_argument('--embedding', type=str, default='embedding.npy',
-						help='path to embedding.npy.')
+  parser.add_argument('--embedding', type=str, default='embedding.npy',
+					  help='path to embedding.npy.')
 
-	FLAGS, unparsed = parser.parse_known_args()
+  FLAGS, unparsed = parser.parse_known_args()
 
-	return FLAGS, unparsed
+  return FLAGS, unparsed
 
 class ModelConfig(object):
   """Wrapper class for model hyperparameters."""
