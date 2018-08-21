@@ -54,7 +54,7 @@ def parse_args(check=True):
     parser.add_argument('--number_of_steps', type=int, default=1000000,
                         help='Number of training steps.')
 
-    parser.add_argument('--log_every_n_steps', type=int, default=10,
+    parser.add_argument('--log_every_n_steps', type=int, default=1,
                         help='Frequency at which loss and global step are logged.')
 
     FLAGS, unparsed = parser.parse_known_args()
