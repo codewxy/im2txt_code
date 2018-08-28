@@ -2,15 +2,13 @@
 
 一般包含的文件
 
-|-- models
+- models
+  - checkpoint
+  - model.ckpt-99994.meta
+  - model.ckpt-99994.index
+  - model.ckpt-99994.data-00000-of-00001
 
-	|-- checkpoint
 
-	|-- model.ckpt-99994.data-00000-of-00001
-
-	|-- model.ckpt-99994.index
-
-	|-- model.ckpt-99994.meta
 
 
 
