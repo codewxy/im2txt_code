@@ -48,7 +48,7 @@ def parse_args(check=True):
     parser.add_argument('--train_dir', type=str, default='/output/train',
                         help='Directory for saving and loading model checkpoints.')
 
-    parser.add_argument('--train_inception', type=bool, default=True,
+    parser.add_argument('--train_inception', type=bool, default=False,
                         help='Whether to train inception submodel variables.')
 
     parser.add_argument('--number_of_steps', type=int, default=1000000,

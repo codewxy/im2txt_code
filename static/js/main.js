@@ -21,6 +21,7 @@ $(document).ready(function () {
         $('#btn-predict').show();
         $('#result').text('');
         $('#result').hide();
+        $('#result_data').hide();
         readURL(this);
     });
 
@@ -44,6 +45,7 @@ $(document).ready(function () {
 			dataType : 'json',
             success: function (data) {
                 // Get and display the result
+                $('#result_data').show();
                 $('.loader').hide();
                 $('#result').fadeIn(600);
                 $('#result').text(' Predict result:  ');
@@ -56,6 +58,11 @@ $(document).ready(function () {
 				$('#result_data').html(html); 
                 console.log('Success!');
             },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('.loader').hide();
+                $('#result').text(qXHR.responseText);
+                console.log('Error!');
+            }
         });
     });
 
