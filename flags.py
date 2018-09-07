@@ -44,6 +44,9 @@ def parse_args(check=True):
     parser.add_argument('--max_checkpoints_to_keep', type=int, default=10,
                         help='How many model checkpoints to keep.')
 
+    parser.add_argument('--optimizer', type=str, default='SGD',
+                        help='Optimizer for training the model.')
+
     #
     parser.add_argument('--train_dir', type=str, default='/output/train',
                         help='Directory for saving and loading model checkpoints.')

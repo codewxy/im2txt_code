@@ -94,7 +94,7 @@ class TrainingConfig(object):
     self.num_examples_per_epoch = FLAGS.num_examples_per_epoch#6000
 
     # Optimizer for training the model.
-    self.optimizer = "Adam"#"SGD"
+    self.optimizer = FLAGS.optimizer#"SGD"
 
     # Learning rate for the initial phase of training.
     self.initial_learning_rate = FLAGS.initial_learning_rate#2.0
